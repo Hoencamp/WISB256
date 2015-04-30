@@ -1,10 +1,10 @@
 import sys
-# sys.argv is a list with the command-line arguments. sysv.arg[0] is the name of Python script
-print('Number of arguments:', len(sys.argv), 'arguments.')
-print('Argument List:', str(sys.argv)) 
-
-N=20
+import time
+T1 = time.perf_counter()    
+#N=100
+N=int(sys.argv[1])
 lijst=[]
+primes=[]
 for i in range(0, N):
     lijst.append(True)
 
@@ -12,15 +12,16 @@ lijst[0]=False
 lijst[1]=False
 for k in range(2,N):
     if lijst[k]==True:
-        print(k)
+#       print(k)
+        primes.append(k)
         for i in range(2*k,N,k):
             lijst[i]=False
 
-print(lijst)
+text=open(sys.argv[2],'w')
 
+for i in primes[:-1]:
+    text.write(str(i)+'\n')
+text.write(str(primes[len(primes)-1]))
 
-def som(a,b):
-    c=a+b
-    return str(c)+" is de som"
-    
-print(som(4,8)+"!")
+T2=time.perf_counter()
+print('Found '+str(len(primes))+' Prime numbers smaller than '+str(N)+' in '+str(T2-T1))
