@@ -24,4 +24,4 @@ for i in primes[:-1]:
 text.write(str(primes[len(primes)-1]))
 
 T2=time.perf_counter()
-print('Found '+str(len(primes))+' Prime numbers smaller than '+str(N)+' in '+str(T2-T1))
+print('Found '+str(len(primes))+' Prime numbers smaller than '+str(N)+' in '+str(T2-T1)+' sec.')
